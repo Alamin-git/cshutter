@@ -1,0 +1,20 @@
+.banner {
+   background-image: linear-gradient(rgba(0, 0, 0, 0.35),
+         rgba(0, 0, 0, 0.35)), url(../../../images/banner.jpg);
+   height: 80vh;
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-position: center;
+   opacity: 0.5;
+   background-attachment: fixed;
+}
+
+.title {
+   font-size: 70px;
+   color: #e72525;
+}
+
+.title2 {
+   font-size: 50px;
+   color: #000000;
+}
