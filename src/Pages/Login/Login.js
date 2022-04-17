@@ -24,12 +24,12 @@ const Login = () => {
       navigate(from, { replace: true });
    }
 
-   const handelSubmit = e => {
+   const handelLoginSubmit = e => {
       e.preventDefault();
-      if (password.length < 6) {
-         setError('Password must be 6 character or more.');
-         return;
-      }
+      // if (password.length < 6) {
+      //    setError('Password must be 6 character or more.');
+      //    return;
+      // }
       setError('');
       signInWithEmailAndPassword(email, password);
    }
@@ -37,7 +37,7 @@ const Login = () => {
       <div className='container'>
          <div className="login-form">
             <h3 className='text-center mt-5 mb-3 fs-2 text-secondary fw-bold'>Login</h3>
-            <Form onSubmit={handelSubmit} className='w-50 mx-auto  border p-5 rounded'>
+            <Form onSubmit={handelLoginSubmit} className='w-50 mx-auto  border p-5 rounded'>
                <Form.Group className="mb-3" controlId="formBasicEmail">
                   <Form.Label>Email address</Form.Label>
                   <Form.Control ref={emailRef} type="email" placeholder="Enter email" required />
@@ -58,7 +58,7 @@ const Login = () => {
                      }
                      <p>Don't have account?
                         <Link
-                           to={'/signout'}
+                           to={'/login'}
                            className="text-decoration-none">
                            Sign Up
                         </Link></p>
