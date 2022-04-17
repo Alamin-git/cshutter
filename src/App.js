@@ -9,6 +9,7 @@ import Footer from './Pages/Shared/Footer/Footer';
 import Checkout from './Pages/Checkout/Checkout';
 import Login from './Pages/Login/Login';
 import RequireAuth from './RequireAuth/RequireAuth';
+import SignOut from './Pages/SignOut/SignOut';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         </Route>
         <Route path='/about' element={<AboutMe></AboutMe>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
+        <Route path='/signout' element={<SignOut></SignOut>}></Route>
       </Routes>
       <Footer></Footer>
     </div>
