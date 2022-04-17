@@ -25,9 +25,10 @@ const Header = () => {
                         Home
                      </Nav.Link>
                      <Nav.Link
-                        // as={CustomLink}
-                        className='header-menu'>
-                        Services
+                        as={CustomLink}
+                        className='header-menu'
+                        to={'/checkout'}>
+                        Checkout
                      </Nav.Link>
                      <Nav.Link
                         as={CustomLink}
@@ -39,7 +40,7 @@ const Header = () => {
                         as={CustomLink}
                         className='header-menu'
                         to={'/about'}>
-                        About Me
+                        AboutMe
                      </Nav.Link>
                   </Nav>
                   <Nav>
