@@ -3,6 +3,9 @@ import { Form, Button } from 'react-bootstrap';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import gLogo from '../../images/google-icon.png';
+import gitLogo from '../../images/githubLogo.png';
+import './Login.css'
 
 const Login = () => {
    const emailRef = useRef('');
@@ -37,37 +40,44 @@ const Login = () => {
       <div className='container'>
          <div className="login-form">
             <h3 className='text-center mt-5 mb-3 fs-2 text-secondary fw-bold'>Login</h3>
-            <Form onSubmit={handelLoginSubmit} className='w-50 mx-auto  border p-5 rounded'>
-               <Form.Group className="mb-3" controlId="formBasicEmail">
-                  <Form.Label>Email address</Form.Label>
-                  <Form.Control ref={emailRef} type="email" placeholder="Enter email" required />
-                  <Form.Text className="text-muted">
-                     We'll never share your email with anyone else.
-                  </Form.Text>
-               </Form.Group>
+            <div className='w-50 mx-auto  border p-5 rounded'>
+               <Form onSubmit={handelLoginSubmit} >
+                  <Form.Group className="mb-3" controlId="formBasicEmail">
+                     <Form.Label>Email address</Form.Label>
+                     <Form.Control ref={emailRef} type="email" placeholder="Enter email" required />
+                     <Form.Text className="text-muted">
+                        We'll never share your email with anyone else.
+                     </Form.Text>
+                  </Form.Group>
 
-               <Form.Group className="mb-3" controlId="formBasicPassword">
-                  <Form.Label>Password</Form.Label>
-                  <Form.Control ref={passwordRef} type="password" placeholder="Password" required />
-               </Form.Group>
-               <Form.Group className="mb-3" controlId="formBasicPassword">
-                  <Form.Text>
-                     <p style={{ color: 'red' }}>{error}</p>
-                     {
-                        loading && <p>Loading...</p>
-                     }
-                     <p>Don't have account?
-                        <Link
-                           to={'/signout'}
-                           className="text-decoration-none">
-                           Sign Up
-                        </Link></p>
-                  </Form.Text>
-               </Form.Group>
-               <Button variant="primary" type="submit">
-                  Login
-               </Button>
-            </Form>
+                  <Form.Group className="mb-3" controlId="formBasicPassword">
+                     <Form.Label>Password</Form.Label>
+                     <Form.Control ref={passwordRef} type="password" placeholder="Password" required />
+                  </Form.Group>
+                  <Form.Group className="mb-3" controlId="formBasicPassword">
+                     <Form.Text>
+                        <p style={{ color: 'red' }}>{error}</p>
+                        {
+                           loading && <p>Loading...</p>
+                        }
+                        <p>Don't have account?
+                           <Link
+                              to={'/signout'}
+                              className="text-decoration-none">
+                              Sign Up
+                           </Link></p>
+                     </Form.Text>
+                  </Form.Group>
+                  <Button className='mb-3 d-block mx-auto' variant="primary" type="submit">
+                     Login
+                  </Button>
+               </Form>
+               <p className='login-or'>or</p>
+               <div className="g-sign-btn">
+                  <img src={gLogo} alt="" />
+                  <img src={gitLogo} alt="" />
+               </div>
+            </div>
          </div>
       </div>
    );

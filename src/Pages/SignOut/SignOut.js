@@ -3,6 +3,8 @@ import { Form, Button } from 'react-bootstrap';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
+import gLogo from '../../images/google-icon.png';
+import gitLogo from '../../images/githubLogo.png';
 
 const SignOut = () => {
    const emailRef = useRef('');
@@ -37,41 +39,48 @@ const SignOut = () => {
       <div className='container mb-5'>
          <div className="login-form">
             <h3 className='text-center mt-5 mb-3 fs-2 text-secondary fw-bold'>Sign Up</h3>
-            <Form onSubmit={handelSignUpSubmit} className='w-50 mx-auto  border p-5 rounded'>
-               <Form.Group className="mb-3" controlId="formBasicEmail">
-                  <Form.Label>Name</Form.Label>
-                  <Form.Control ref={emailRef} type="text" placeholder="Name" required />
-               </Form.Group>
-               <Form.Group className="mb-3" controlId="formBasicEmail">
-                  <Form.Label>Email address</Form.Label>
-                  <Form.Control ref={emailRef} type="email" placeholder="Enter email" required />
-                  <Form.Text className="text-muted">
-                     We'll never share your email with anyone else.
-                  </Form.Text>
-               </Form.Group>
+            <div className='w-50 mx-auto  border p-5 rounded'>
+               <Form onSubmit={handelSignUpSubmit}>
+                  <Form.Group className="mb-3" controlId="formBasicEmail">
+                     <Form.Label>Name</Form.Label>
+                     <Form.Control ref={emailRef} type="text" placeholder="Name" required />
+                  </Form.Group>
+                  <Form.Group className="mb-3" controlId="formBasicEmail">
+                     <Form.Label>Email address</Form.Label>
+                     <Form.Control ref={emailRef} type="email" placeholder="Enter email" required />
+                     <Form.Text className="text-muted">
+                        We'll never share your email with anyone else.
+                     </Form.Text>
+                  </Form.Group>
 
-               <Form.Group className="mb-3" controlId="formBasicPassword">
-                  <Form.Label>Password</Form.Label>
-                  <Form.Control ref={passwordRef} type="password" placeholder="Password" required />
-               </Form.Group>
-               <Form.Group className="mb-3" controlId="formBasicPassword">
-                  <Form.Text>
-                     <p style={{ color: 'red' }}>{error}</p>
-                     {
-                        loading && <p>Loading...</p>
-                     }
-                     <p>Already have an account?
-                        <Link
-                           to={'/login'}
-                           className="text-decoration-none ml-2">
-                           Login
-                        </Link></p>
-                  </Form.Text>
-               </Form.Group>
-               <Button variant="primary" type="submit">
-                  Sign Up
-               </Button>
-            </Form>
+                  <Form.Group className="mb-3" controlId="formBasicPassword">
+                     <Form.Label>Password</Form.Label>
+                     <Form.Control ref={passwordRef} type="password" placeholder="Password" required />
+                  </Form.Group>
+                  <Form.Group className="mb-3" controlId="formBasicPassword">
+                     <Form.Text>
+                        <p style={{ color: 'red' }}>{error}</p>
+                        {
+                           loading && <p>Loading...</p>
+                        }
+                        <p>Already have an account?
+                           <Link
+                              to={'/login'}
+                              className="text-decoration-none ml-2">
+                              Login
+                           </Link></p>
+                     </Form.Text>
+                  </Form.Group>
+                  <Button className='mb-3 d-block mx-auto' variant="primary" type="submit">
+                     Sign Up
+                  </Button>
+               </Form>
+               <p className='login-or'>or</p>
+               <div className="g-sign-btn">
+                  <img src={gLogo} alt="" />
+                  <img src={gitLogo} alt="" />
+               </div>
+            </div>
          </div>
       </div>
    );
