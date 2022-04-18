@@ -1,0 +1,13 @@
+.text-primary,
+.text-primary-hover:hover {
+   color: #ff712a !important;
+}
+
+p {
+   margin: 0 0 20px;
+}
+
+.mb-1-6,
+.my-1-6 {
+   margin-bottom: 1.6rem;
+}

@@ -1,5 +1,6 @@
 body {
    background: #D3DEEA;
+   overflow-x: hidden;
 }
 
 .top {

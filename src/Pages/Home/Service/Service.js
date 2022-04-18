@@ -7,7 +7,7 @@ const Service = ({ service }) => {
    const { picture, name, body, price } = service;
    return (
       <Col>
-         <Card className='mb-5 shadow-lg' style={{ width: '18rem' }}>
+         <Card className='mb-5 shadow-lg mx-auto' style={{ width: '22rem', height: "32rem" }}>
             <Card.Img variant="top" src={picture} />
             <Card.Body>
                <Card.Title>{name}</Card.Title>
