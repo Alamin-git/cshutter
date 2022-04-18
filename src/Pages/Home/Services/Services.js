@@ -1,4 +1,4 @@
-import { Col, Container, Row } from 'react-bootstrap';
+import { Container, Row } from 'react-bootstrap';
 import useServices from '../../../hooks/useServices';
 import Service from '../Service/Service';
 

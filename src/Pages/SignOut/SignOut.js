@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import gLogo from '../../images/google-icon.png';
@@ -15,6 +15,8 @@ const SignOut = () => {
    const navigate = useNavigate();
    const location = useLocation();
    const from = location.state?.from?.pathname || '/';
+   let errorMassage;
+   let loadingMassage;
 
    const [
       createUserWithEmailAndPassword,
@@ -22,8 +24,17 @@ const SignOut = () => {
       loading
    ] = useCreateUserWithEmailAndPassword(auth);
 
-   if (user) {
+   const [signInWithGoogle, user1, loading1, error1] = useSignInWithGoogle(auth);
+   const [signInWithGithub, user2, loading2, error2] = useSignInWithGithub(auth);
+
+   if (user || user1 || user2) {
       navigate(from, { replace: true });
+   }
+   if (loading || loading1 || loading2) {
+      loadingMassage = <p>Loading...</p>
+   }
+   if (error || error1 || error2) {
+      errorMassage = <p className='text-danger'>Error: {error?.message} {error1?.message} {error2?.message}</p>
    }
 
    const handelSignUpSubmit = e => {
@@ -39,7 +50,7 @@ const SignOut = () => {
       <div className='container mb-5'>
          <div className="login-form">
             <h3 className='text-center mt-5 mb-3 fs-2 text-secondary fw-bold'>Sign Up</h3>
-            <div className='w-50 mx-auto  border p-5 rounded'>
+            <div className='w-50 mx-auto  border border-secondary p-5 rounded'>
                <Form onSubmit={handelSignUpSubmit}>
                   <Form.Group className="mb-3" controlId="formBasicEmail">
                      <Form.Label>Name</Form.Label>
@@ -59,10 +70,8 @@ const SignOut = () => {
                   </Form.Group>
                   <Form.Group className="mb-3" controlId="formBasicPassword">
                      <Form.Text>
-                        <p style={{ color: 'red' }}>{error}</p>
-                        {
-                           loading && <p>Loading...</p>
-                        }
+                        <p>{loadingMassage}</p>
+                        <p>{errorMassage}</p>
                         <p>Already have an account?
                            <Link
                               to={'/login'}
@@ -77,8 +86,8 @@ const SignOut = () => {
                </Form>
                <p className='login-or'>or</p>
                <div className="g-sign-btn">
-                  <img src={gLogo} alt="" />
-                  <img src={gitLogo} alt="" />
+                  <img onClick={() => signInWithGoogle()} src={gLogo} alt="" />
+                  <img onClick={() => signInWithGithub()} src={gitLogo} alt="" />
                </div>
             </div>
          </div>
