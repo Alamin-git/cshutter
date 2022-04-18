@@ -58,7 +58,7 @@ const Login = () => {
                      }
                      <p>Don't have account?
                         <Link
-                           to={'/login'}
+                           to={'/signout'}
                            className="text-decoration-none">
                            Sign Up
                         </Link></p>
