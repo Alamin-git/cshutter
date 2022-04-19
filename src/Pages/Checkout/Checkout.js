@@ -7,7 +7,7 @@ import auth from '../../firebase.init';
 const Checkout = () => {
    const [user] = useAuthState(auth);
    console.log(user);
-   const notify = () => toast("Booked..");
+   const notify = () => toast("Thank you for the booking.");
    const handelLoginSubmit = e => {
       e.preventDefault();
       notify();
@@ -46,7 +46,17 @@ const Checkout = () => {
                </Form>
             </div>
          </div>
-         <ToastContainer />
+         <ToastContainer
+            position="top-center"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+         />
       </div>
    );
 };
