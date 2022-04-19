@@ -22,7 +22,8 @@ const SignOut = () => {
       createUserWithEmailAndPassword,
       user,
       loading
-   ] = useCreateUserWithEmailAndPassword(auth);
+   ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+
 
    const [signInWithGoogle, user1, loading1, error1] = useSignInWithGoogle(auth);
    const [signInWithGithub, user2, loading2, error2] = useSignInWithGithub(auth);
@@ -39,11 +40,6 @@ const SignOut = () => {
 
    const handelSignUpSubmit = e => {
       e.preventDefault();
-      // if (password.length < 6) {
-      //    setError('Password must be 6 character or more.');
-      //    return;
-      // }
-      setError('');
       createUserWithEmailAndPassword(email, password);
    }
    return (
